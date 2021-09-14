@@ -1,0 +1,52 @@
+#[push]
+#  default = upstream
+[branch]
+  # Don't set new branches to auto-track by default
+
+  # I want to be able to do and keep it untracked by default:
+  # git checkout new-branch origin/master
+  autoSetupMerge = false
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
+[user]
+  name = Zach Moazeni
+  email = zmoazeni@github.com
+  # signingkey = ECACE5037A6EDA84
+[alias]
+  co = checkout
+  st = status
+  ci = commit
+  br = branch
+  cp = cherry-pick
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit # http://coderwall.com/p/euwpig?i=3&p=1&t=git
+  a  = "!clear; git add -p"
+  snapshot = "!f(){ git stash save -k -u $1 && git stash apply; };f"
+  recent = for-each-ref --count=10 --sort=-committerdate --format='%(refname:short)' refs/heads/
+  mergeit = "!f(){ git merge $1 && git br -d $1 && git push origin :$1; };f"
+  delete-merged="!git branch --merged | egrep -v '^master|main$' | xargs git branch -d"
+  changed-files = "diff --name-only" # https://stackoverflow.com/a/1552353
+# [core]
+#   editor = /usr/bin/vim
+# [gpg]
+#   program = gpg
+[commit]
+	gpgsign = true
+	verbose = true
+[github]
+	user = zmoazeni
+[push]
+	default = simple
+# [credential]
+# 	helper = osxkeychain
+# [include]
+#   path = ~/.gitconfig.local
+
+# from codespaces default
+[url "https://github.com/"]
+  insteadOf = git@github.com:
+[credential]
+  helper = cache

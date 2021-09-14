@@ -13,6 +13,7 @@ ln -s $(pwd)/vimrc $HOME/.vimrc
 rm -f $HOME/.zshrc
 ln -s $(pwd)/zshrc $HOME/.zshrc
 ln -s $(pwd)/bash_profile $HOME/.bash_profile
+ln -s $(pwd)/gitconfig $HOME/.gitconfig
 
 ln -s $(pwd)/ohmyzsh-plugins/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 
