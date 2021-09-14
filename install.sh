@@ -14,6 +14,8 @@ rm -f $HOME/.zshrc
 ln -s $(pwd)/zshrc $HOME/.zshrc
 ln -s $(pwd)/bash_profile $HOME/.bash_profile
 
+ln -s $(pwd)/ohmyzsh-plugins/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+
 sudo apt-get --assume-yes install silversearcher-ag bat jq
 # vim -Es -u $HOME/.vimrc -c "PlugInstall | qa"
 
