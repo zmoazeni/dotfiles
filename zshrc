@@ -10,7 +10,7 @@ export CLICOLOR=1
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="refined"
+ZSH_THEME="candy"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -70,9 +70,12 @@ ZSH_THEME="refined"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# plugins=(git)
+plugins=(zsh-autosuggestions docker docker-compose rake tmux golang git)
 
 source $ZSH/oh-my-zsh.sh
+
+autoload -U compinit && compinit -u
 
 # User configuration
 
@@ -99,3 +102,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias be='bundle exec'
+alias list-make-targets="make -qp | awk -F':' '/^[a-zA-Z0-9][^\$#\/\t=]*:([^=]|$)/ {split(\$1,A,/ /);for(i in A)print A[i]}'"
+alias pretty-json='jq "."'
+alias strip-color-codes="perl -pe 's/\x1b\[[0-9;]*[mG]//g'"
+alias clear-memcache="echo 'flush_all' | nc localhost 11211" # https://www.cyberciti.biz/faq/linux-unix-flush-contents-of-memcached-instance/
+
+alias dc="docker-compose"
+alias gitnp="git --no-pager"
+
